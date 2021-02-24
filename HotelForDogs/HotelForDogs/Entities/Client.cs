@@ -10,7 +10,7 @@ namespace HotelForDogs.Entities
     public class Client
     {
         [Key]
-        public int Id { get; set; }
+        public int ClientId { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -40,5 +40,6 @@ namespace HotelForDogs.Entities
 
         [ForeignKey("DogId")]
         public Dog Dog { get; set; }
+        public int DogId { get; set; }
     }
 }
