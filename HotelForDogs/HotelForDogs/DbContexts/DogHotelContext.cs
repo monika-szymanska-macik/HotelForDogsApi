@@ -4,9 +4,9 @@ using System;
 
 namespace HotelForDogs.DbContexts
 {
-    public class ClientContext : DbContext 
+    public class DogHotelContext : DbContext 
     {
-        public ClientContext(DbContextOptions<ClientContext> options) : base(options)
+        public DogHotelContext(DbContextOptions<DogHotelContext> options) : base(options)
         {
 
         }

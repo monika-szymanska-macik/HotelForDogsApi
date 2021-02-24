@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HotelForDogs.Migrations
 {
-    [DbContext(typeof(ClientContext))]
-    [Migration("20210221081659_InitialMigration")]
+    [DbContext(typeof(DogHotelContext))]
+    [Migration("20210224092306_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -21,7 +21,7 @@ namespace HotelForDogs
             using (var scope = host.Services.CreateScope())
                 try
                 {
-                    var context = scope.ServiceProvider.GetService<ClientContext>();
+                    var context = scope.ServiceProvider.GetService<DogHotelContext>();
                     context.Database.EnsureDeleted();
                     context.Database.Migrate();
                 }

@@ -13,9 +13,7 @@ namespace HotelForDogs.Services
         void UpdateClient(Client client);
         void DeleteClient(Client client);
         IEnumerable<Client> GetClients();
-        void AddDog(Dog dog);
-        void DeleteDog(Dog dog);
-        void UpdateDog(Dog dog);
+
         bool ClientExists(int clientId);
         bool Save();
     }

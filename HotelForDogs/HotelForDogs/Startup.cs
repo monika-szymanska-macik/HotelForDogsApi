@@ -1,4 +1,5 @@
 using HotelForDogs.DbContexts;
+using HotelForDogs.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,7 +29,9 @@ namespace HotelForDogs
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<ClientContext>(options =>
+            services.AddScoped<IDogRepository, DogRepository>();
+            services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddDbContext<DogHotelContext>(options =>
             {
                 options.UseSqlServer(
                     @"Server=(localdb)\mssqllocaldb;Database=HotelForDogsDB;Trusted_Connection=True;");

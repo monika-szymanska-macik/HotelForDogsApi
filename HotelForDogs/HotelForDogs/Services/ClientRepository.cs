@@ -9,9 +9,9 @@ namespace HotelForDogs.Services
 {
     public class ClientRepository : IClientRepository
     {
-        private readonly ClientContext _context;
+        private readonly DogHotelContext _context;
 
-        public ClientRepository(ClientContext context)
+        public ClientRepository(DogHotelContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
@@ -42,23 +42,6 @@ namespace HotelForDogs.Services
         public IEnumerable<Client> GetClients()
         {
             return _context.Clients.ToList<Client>();
-        }
-        public void AddDog(Dog dog)
-        {
-            if (dog == null)
-            {
-                throw new ArgumentNullException(nameof(dog));
-            }
-
-            _context.Dogs.Add(dog);
-        }
-        public void DeleteDog(Dog dog)
-        {
-            _context.Dogs.Remove(dog);
-        }
-        public void UpdateDog(Dog dog)
-        {
-
         }
         public bool ClientExists(int clientId)
         {
