@@ -15,31 +15,15 @@ namespace HotelForDogs.Entities
         [Required]
         [MaxLength(50)]
         public string FirstName { get; set; }
-        private string _lastName { get; set; }
-        public string LastName
-        {
-            get
-            {
-                return _lastName;
-            }
-            set
-            {
-                _lastName = value;
-            }
-        }
-        public string FullName
-        {
-            get
-            {
-                return FirstName + " " + LastName;
-            }
-        }
+
+        [Required]
+        [MaxLength(50)]
+        public string LastName { get; set; }
 
         [Required]
         public string PhoneNumber { get; set; }
 
-        [ForeignKey("DogId")]
-        public Dog Dog { get; set; }
-        public int DogId { get; set; }
+        public ICollection<Dog> Dogs { get; set; }
+        = new List<Dog>();
     }
 }

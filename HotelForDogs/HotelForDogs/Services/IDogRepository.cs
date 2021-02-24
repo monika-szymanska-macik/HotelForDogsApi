@@ -14,5 +14,6 @@ namespace HotelForDogs.Services
         void UpdateDog(Dog dog);
         IEnumerable<Dog> GetDogs();
         bool Save();
+        IEnumerable<Dog> GetClientDogs(int clientId);
     }
 }

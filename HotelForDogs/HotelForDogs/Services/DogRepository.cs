@@ -35,6 +35,13 @@ namespace HotelForDogs.Services
             return _context.Dogs.FirstOrDefault(a => a.DogId == dogId);
         }
 
+        public IEnumerable<Dog> GetClientDogs(int clientId)
+        {
+            return _context.Dogs
+                        .Where(c => c.ClientId == clientId)
+                        .OrderBy(c => c.Name).ToList();
+        }
+
         public IEnumerable<Dog> GetDogs()
         {
             return _context.Dogs.ToList<Dog>();

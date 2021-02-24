@@ -1,4 +1,7 @@
-﻿using HotelForDogs.Services;
+﻿using AutoMapper;
+using HotelForDogs.Entities;
+using HotelForDogs.Models;
+using HotelForDogs.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,18 +11,33 @@ using System.Threading.Tasks;
 namespace HotelForDogs.Controllers
 {
     [ApiController]
-    public class ClientsController : ControllerBase 
+    [Route("api/clients")]
+    public class ClientsController : ControllerBase
     {
         private readonly IClientRepository _clientRepository;
-        public ClientsController(IClientRepository clientRepository)
+        private readonly IMapper _mapper;
+        public ClientsController(IClientRepository clientRepository, IMapper mapper)
         {
             _clientRepository = clientRepository ?? throw new ArgumentNullException(nameof(clientRepository));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
-        [HttpGet("api/clients")]
-        public IActionResult GetClients()
+        [HttpGet()]
+        public ActionResult<IEnumerable<ClientDto>> GetClients()
         {
             var clientsFromRepo = _clientRepository.GetClients();
-            return new JsonResult(clientsFromRepo);
+            return Ok(_mapper.Map<IEnumerable<ClientDto>>(clientsFromRepo));
+        }
+        [HttpGet("{clientId}")]
+        public IActionResult GetClient(int clientId)
+        {
+            var clientFromRepo = _clientRepository.GetClient(clientId);
+
+            if (clientFromRepo == null)
+            {
+                return NotFound();
+            }
+      
+            return Ok(_mapper.Map<ClientDto>(clientFromRepo));
         }
     }
 }

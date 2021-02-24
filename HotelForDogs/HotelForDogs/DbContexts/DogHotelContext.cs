@@ -45,7 +45,6 @@ namespace HotelForDogs.DbContexts
                     FirstName = "Jan",
                     LastName = "Kowalski",
                     PhoneNumber = "505505505",
-                    DogId = 1
 
                 },
                 new Client()
@@ -54,7 +53,6 @@ namespace HotelForDogs.DbContexts
                     FirstName = "Jan",
                     LastName = "Nowak",
                     PhoneNumber = "606606606",
-                    DogId = 2
                 },
                 new Client()
                 {
@@ -62,7 +60,6 @@ namespace HotelForDogs.DbContexts
                     FirstName = "John",
                     LastName = "Smith",
                     PhoneNumber = "707707707",
-                    DogId = 3
                 }
                 );
             base.OnModelCreating(modelBuilder);
