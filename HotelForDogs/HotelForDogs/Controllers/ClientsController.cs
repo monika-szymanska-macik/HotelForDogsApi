@@ -41,7 +41,7 @@ namespace HotelForDogs.Controllers
             return Ok(_mapper.Map<ClientDto>(clientFromRepo));
         }
         [HttpPost]
-        public ActionResult<ClientDto> CreateAclient(ClientForCreationDto client)
+        public ActionResult<ClientDto> CreateClient(ClientForCreationDto client)
         {
             var clientEntity = _mapper.Map<Client>(client);
             _clientRepository.AddClient(clientEntity);
@@ -52,6 +52,13 @@ namespace HotelForDogs.Controllers
                 new { clientId = clientToReturn.ClientId }, 
                 clientToReturn);
 
+        }
+
+        [HttpOptions]
+        public IActionResult GetClientsOptions()
+        {
+            Response.Headers.Add("Allow", "GET,OPTIONS,POST");
+            return Ok();
         }
     }
 }

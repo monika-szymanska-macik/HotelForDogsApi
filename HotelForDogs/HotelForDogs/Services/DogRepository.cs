@@ -14,14 +14,15 @@ namespace HotelForDogs.Services
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
-        public void AddDog(Dog dog)
+        public void AddDog(int clientId, Dog dog)
         {
+            
             if (dog == null)
             {
                 throw new ArgumentNullException(nameof(dog));
             }
 
-
+            dog.ClientId = clientId;
             _context.Dogs.Add(dog);
         }
 
@@ -51,7 +52,7 @@ namespace HotelForDogs.Services
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            return (_context.SaveChanges() >= 0);
         }
 
         public void UpdateDog(Dog dog)

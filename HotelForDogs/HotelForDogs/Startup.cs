@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,7 +36,42 @@ namespace HotelForDogs
             {
                 setupAction.ReturnHttpNotAcceptable = true;
 
-            }).AddXmlDataContractSerializerFormatters();
+            }).AddXmlDataContractSerializerFormatters()
+            .ConfigureApiBehaviorOptions(setupAction =>
+            {
+                setupAction.InvalidModelStateResponseFactory = context =>
+                {
+                    var problemDetailsFactory = context.HttpContext.RequestServices
+                    .GetRequiredService<ProblemDetailsFactory>();
+                    var problemDetails = problemDetailsFactory.CreateValidationProblemDetails(
+                        context.HttpContext,
+                        context.ModelState);
+
+                    problemDetails.Detail = "See the error field for details";
+                    problemDetails.Instance = context.HttpContext.Request.Path;
+
+                    var actionExecutingContext = context as Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext;
+
+                    if((context.ModelState.ErrorCount > 0) && 
+                    (actionExecutingContext?.ActionArguments.Count == context.ActionDescriptor.Parameters.Count))
+                    {
+                        problemDetails.Type = "http";
+                        problemDetails.Status = StatusCodes.Status422UnprocessableEntity;
+                        problemDetails.Title = "One or more validation errors occurred.";
+
+                        return new UnprocessableEntityObjectResult(problemDetails)
+                        {
+                            ContentTypes = { "application/problem+json" }
+                        };
+                    };
+                    problemDetails.Status = StatusCodes.Status400BadRequest;
+                    problemDetails.Title = "One or more errors on input occurred.";
+                    return new BadRequestObjectResult(problemDetails)
+                    {
+                        ContentTypes = {"application/problem+json"}
+                    };
+                };
+            });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

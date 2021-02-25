@@ -9,7 +9,7 @@ namespace HotelForDogs.Services
     public interface IDogRepository
     {
         Dog GetDog(int dogId, int clientId);
-        void AddDog(Dog dog);
+        void AddDog(int clientId, Dog dog);
         void DeleteDog(Dog dog);
         void UpdateDog(Dog dog);
         IEnumerable<Dog> GetDogs();

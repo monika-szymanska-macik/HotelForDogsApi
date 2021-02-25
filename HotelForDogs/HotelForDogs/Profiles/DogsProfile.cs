@@ -11,6 +11,8 @@ namespace HotelForDogs.Profiles
         public DogsProfile()
         {
             CreateMap<Entities.Dog, Models.DogDto>();
+            CreateMap<Models.DogForCreationDto, Entities.Dog>();
+            CreateMap<Models.DogToUpdateDto, Entities.Dog>();
         }
     }
 }
