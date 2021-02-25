@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace HotelForDogs.Controllers
 {
     [ApiController]
-    [Route("api/clients/{clientId}/dogs}")]
-    public class DogsController : ControllerBase 
+    [Route("api/clients/{clientId}/dogs")]
+    public class DogsController : ControllerBase
     {
         private readonly IDogRepository _dogRepository;
         private readonly IMapper _mapper;
@@ -32,5 +32,12 @@ namespace HotelForDogs.Controllers
             var dogsForClientFromRepo = _dogRepository.GetClientDogs(clientId);
             return Ok(_mapper.Map<IEnumerable<DogDto>>(dogsForClientFromRepo));
         }
+        [HttpGet("{dogId}")]
+        public ActionResult<DogDto> GetDogForClient(int dogId, int clientId)
+        {
+            var dogForClientFromRepo = _dogRepository.GetDog(dogId, clientId);
+            return Ok(_mapper.Map<DogDto>(dogForClientFromRepo));
+        }
+
     }
 }

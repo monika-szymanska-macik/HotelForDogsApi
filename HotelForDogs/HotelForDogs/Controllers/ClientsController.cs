@@ -22,12 +22,13 @@ namespace HotelForDogs.Controllers
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
         [HttpGet()]
+        [HttpHead]
         public ActionResult<IEnumerable<ClientDto>> GetClients()
         {
             var clientsFromRepo = _clientRepository.GetClients();
             return Ok(_mapper.Map<IEnumerable<ClientDto>>(clientsFromRepo));
         }
-        [HttpGet("{clientId}")]
+        [HttpGet("{clientId}", Name ="GetClient")]
         public IActionResult GetClient(int clientId)
         {
             var clientFromRepo = _clientRepository.GetClient(clientId);
@@ -38,6 +39,19 @@ namespace HotelForDogs.Controllers
             }
       
             return Ok(_mapper.Map<ClientDto>(clientFromRepo));
+        }
+        [HttpPost]
+        public ActionResult<ClientDto> CreateAclient(ClientForCreationDto client)
+        {
+            var clientEntity = _mapper.Map<Client>(client);
+            _clientRepository.AddClient(clientEntity);
+            _clientRepository.Save();
+
+            var clientToReturn = _mapper.Map<ClientDto>(clientEntity);
+            return CreatedAtRoute("GetClient",
+                new { clientId = clientToReturn.ClientId }, 
+                clientToReturn);
+
         }
     }
 }

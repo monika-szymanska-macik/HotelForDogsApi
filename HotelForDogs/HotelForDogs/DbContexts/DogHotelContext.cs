@@ -21,21 +21,24 @@ namespace HotelForDogs.DbContexts
                     DogId = 1,
                     Name = "Rex",
                     Breed = "Crossbreed",
-                    Weight = 15
+                    Weight = 15,
+                    ClientId = 1
                 },
                 new Dog()
                 {
                     DogId = 2,
                     Name = "Max",
                     Breed = "Basset",
-                    Weight = 8
+                    Weight = 8,
+                    ClientId = 1
                 },
                 new Dog()
                 {
                     DogId = 3,
                     Name = "Fred",
                     Breed = "Colli",
-                    Weight = 36
+                    Weight = 36,
+                    ClientId = 3
                 }
                 );
             modelBuilder.Entity<Client>().HasData(

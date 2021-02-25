@@ -30,9 +30,10 @@ namespace HotelForDogs.Services
             _context.Dogs.Remove(dog);
         }
 
-        public Dog GetDog(int dogId)
+        public Dog GetDog(int dogId, int clientId)
         {
-            return _context.Dogs.FirstOrDefault(a => a.DogId == dogId);
+            return _context.Dogs
+                .Where(d => d.DogId == dogId && d.ClientId == clientId).FirstOrDefault();
         }
 
         public IEnumerable<Dog> GetClientDogs(int clientId)
@@ -41,6 +42,7 @@ namespace HotelForDogs.Services
                         .Where(c => c.ClientId == clientId)
                         .OrderBy(c => c.Name).ToList();
         }
+
 
         public IEnumerable<Dog> GetDogs()
         {

@@ -15,6 +15,8 @@ namespace HotelForDogs.Profiles
                 dest => dest.FullName,
                 opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}" )
                 );
+
+            CreateMap<Models.ClientForCreationDto, Entities.Client>();
         }
     }
 }

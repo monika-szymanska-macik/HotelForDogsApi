@@ -9,7 +9,7 @@ namespace HotelForDogs.Services
     public interface IClientRepository
     {
         Client GetClient(int clientId);
-        void AddClient(int dogId, Client client);
+        void AddClient(Client client);
         void UpdateClient(Client client);
         void DeleteClient(Client client);
         IEnumerable<Client> GetClients();

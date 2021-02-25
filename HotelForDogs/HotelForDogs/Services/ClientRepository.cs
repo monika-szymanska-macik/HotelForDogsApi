@@ -21,7 +21,7 @@ namespace HotelForDogs.Services
 
             return _context.Clients.FirstOrDefault(a => a.ClientId == clientId);
         }
-        public void AddClient(int dogId, Client client)
+        public void AddClient(Client client)
         {
             if (client == null)
             {

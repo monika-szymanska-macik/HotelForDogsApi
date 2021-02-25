@@ -2,6 +2,7 @@ using HotelForDogs.DbContexts;
 using HotelForDogs.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
@@ -54,6 +55,17 @@ namespace HotelForDogs
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler(appBuilder =>
+                {
+                    appBuilder.Run(async context =>
+                    {
+                        context.Response.StatusCode = 500;
+                        await context.Response.WriteAsync("Aa unexpected fault happened. Try again later.");
+                    });
+                });
+            };
 
             app.UseHttpsRedirection();
 
