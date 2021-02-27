@@ -13,6 +13,7 @@ namespace HotelForDogs.Profiles
             CreateMap<Entities.Dog, Models.DogDto>();
             CreateMap<Models.DogForCreationDto, Entities.Dog>();
             CreateMap<Models.DogToUpdateDto, Entities.Dog>();
+            CreateMap<Entities.Dog, Models.DogToUpdateDto>();
         }
     }
 }

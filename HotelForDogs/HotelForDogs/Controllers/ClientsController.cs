@@ -60,5 +60,18 @@ namespace HotelForDogs.Controllers
             Response.Headers.Add("Allow", "GET,OPTIONS,POST");
             return Ok();
         }
+        [HttpDelete("{clientId}")]
+        public ActionResult DeleteClient(int clientId)
+        {
+            var clientFromRepo = _clientRepository.GetClient(clientId);
+            if(clientFromRepo == null)
+            {
+                return NotFound();
+            }
+            _clientRepository.DeleteClient(clientFromRepo);
+            _clientRepository.Save();
+
+            return NoContent();
+        }
     }
 }
