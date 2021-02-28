@@ -24,7 +24,7 @@ namespace HotelForDogs.Controllers
         }
         
         [HttpPost]
-        public ActionResult<IEnumerable<ReservationDto>> CreateClientCollection(
+        public ActionResult<IEnumerable<ClientDto>> CreateClientCollection(
             IEnumerable<ClientForCreationDto> clientCollection)
         {
             var clientEntities = _mapper.Map<IEnumerable<Entities.Client>>(clientCollection);

@@ -72,13 +72,13 @@ namespace HotelForDogs.DbContexts
                 {
                     ReservationId = 1,
                     ClientId = 1,
-                    DogId = 2
+                    DaysNumberOfStay = 7
                 },
                 new Reservation()
                 {
                     ReservationId = 2,
                     ClientId = 1,
-                    DogId = 1
+                    DaysNumberOfStay = 2
                 }
                 );
             base.OnModelCreating(modelBuilder);

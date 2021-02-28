@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\HotelForDogs",
+    "\\HotelForDogs\\HotelForDogs"
   ],
+  "SelectedNode": "\\HotelForDogs\\HotelForDogs.sln",
   "PreviewInSolutionExplorer": false
 }

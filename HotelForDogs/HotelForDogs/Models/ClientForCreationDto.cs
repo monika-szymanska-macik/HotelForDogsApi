@@ -12,5 +12,6 @@ namespace HotelForDogs.Models
         public string PhoneNumber { get; set; }
         public ICollection<DogForCreationDto> Dogs { get; set; }
             = new List<DogForCreationDto>();
+        
     }
 }

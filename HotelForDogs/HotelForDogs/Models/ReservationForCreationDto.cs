@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HotelForDogs.Models
 {
-    public class ReservationToUpdateDto : ReservationForManipulationDto
+    public class ReservationForCreationDto : ReservationForManipulationDto
     {
     }
 }

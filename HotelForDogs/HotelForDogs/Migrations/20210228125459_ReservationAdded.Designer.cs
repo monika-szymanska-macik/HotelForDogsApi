@@ -3,14 +3,16 @@ using HotelForDogs.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HotelForDogs.Migrations
 {
     [DbContext(typeof(DogHotelContext))]
-    partial class DogHotelContextModelSnapshot : ModelSnapshot
+    [Migration("20210228125459_ReservationAdded")]
+    partial class ReservationAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -151,7 +153,7 @@ namespace HotelForDogs.Migrations
                         {
                             ReservationId = 2,
                             ClientId = 1,
-                            DaysNumberOfStay = 2
+                            DaysNumberOfStay = 3
                         });
                 });
 

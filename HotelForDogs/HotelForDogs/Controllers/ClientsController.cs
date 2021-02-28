@@ -23,10 +23,10 @@ namespace HotelForDogs.Controllers
         }
         [HttpGet()]
         [HttpHead]
-        public ActionResult<IEnumerable<ReservationDto>> GetClients()
+        public ActionResult<IEnumerable<ClientDto>> GetClients()
         {
             var clientsFromRepo = _clientRepository.GetClients();
-            return Ok(_mapper.Map<IEnumerable<ReservationDto>>(clientsFromRepo));
+            return Ok(_mapper.Map<IEnumerable<ClientDto>>(clientsFromRepo));
         }
         [HttpGet("{clientId}", Name ="GetClient")]
         public IActionResult GetClient(int clientId)
@@ -38,16 +38,16 @@ namespace HotelForDogs.Controllers
                 return NotFound();
             }
       
-            return Ok(_mapper.Map<ReservationDto>(clientFromRepo));
+            return Ok(_mapper.Map<ClientDto>(clientFromRepo));
         }
         [HttpPost]
-        public ActionResult<ReservationDto> CreateClient(ClientForCreationDto client)
+        public ActionResult<ClientDto> CreateClient(ClientForCreationDto client)
         {
             var clientEntity = _mapper.Map<Client>(client);
             _clientRepository.AddClient(clientEntity);
             _clientRepository.Save();
 
-            var clientToReturn = _mapper.Map<ReservationDto>(clientEntity);
+            var clientToReturn = _mapper.Map<ClientDto>(clientEntity);
             return CreatedAtRoute("GetClient",
                 new { clientId = clientToReturn.ClientId }, 
                 clientToReturn);

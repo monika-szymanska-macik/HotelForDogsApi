@@ -10,11 +10,11 @@ namespace HotelForDogs.Profiles
     {
         public ReservationsProfile()
         {
-            CreateMap<Entities.Reservation, Models.ReservationsDto>()
-                .ForMember(
-                dest => dest.FullName,
-                opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}")
-                );
+            CreateMap<Models.ReservationForCreationDto, Entities.Reservation>();
+            CreateMap<Entities.Reservation, Models.ReservationsDto>();
+            CreateMap<Models.ReservationForCreationDto, Entities.Reservation>();
+            CreateMap<Models.ReservationToUpdateDto, Entities.Reservation>();
+            CreateMap<Entities.Reservation, Models.ReservationToUpdateDto>();
 
         }
 

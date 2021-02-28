@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace HotelForDogs.Models
 {
-    public class ReservationsDto
+    public class ReservationForManipulationDto
     {
-        public int ReservationId { get; set; }
+        [Required(ErrorMessage = "You should enter the number of days of stay")]
         public int DaysNumberOfStay { get; set; }
-        public int ClientId { get; set; }
     }
 }

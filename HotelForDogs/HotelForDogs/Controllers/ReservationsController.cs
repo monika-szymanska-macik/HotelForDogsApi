@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace HotelForDogs.Controllers
 {
     [ApiController]
-    [Route("api/clients/{clientId}/dogs/{dogId}/reservations")]
+    [Route("api/clients/{clientId}/reservations")]
     public class ReservationsController : ControllerBase
     {
         private readonly IDogRepository _dogRepository;
@@ -25,8 +25,9 @@ namespace HotelForDogs.Controllers
             _clientRepository = clientRepository ?? throw new ArgumentNullException(nameof(clientRepository));
             _reservationRepository = reservationRepository ?? throw new ArgumentNullException(nameof(reservationRepository));
         }
-
-        public ActionResult<IEnumerable<ReservationDto>> GetReservationsForClient(int clientId)
+        [HttpGet]
+        public ActionResult<IEnumerable<ReservationsDto>> GetReservationsForClient(int clientId)
+        
         {
             if (!_clientRepository.ClientExists(clientId))
             {
@@ -35,22 +36,7 @@ namespace HotelForDogs.Controllers
             var reservationsForClientFromRepo = _reservationRepository.GetClientReservations(clientId);
             return Ok(_mapper.Map<IEnumerable<ReservationsDto>>(reservationsForClientFromRepo));
         }
-        [HttpGet()]
-        public IActionResult GetReservations()
-        {
-            var reservationsFromRepo = _reservationRepository.GetReservations();
-            var reservations = new List<ReservationsDto>();
-            foreach(var reservation in reservationsFromRepo)
-            {
-                reservations.Add(new ReservationsDto()
-                {
-                    ReservationId = reservation.ReservationId,
-                    DaysNumberOfStay = reservation.
-                });
-                
-            }
 
-            return Ok(reservationsFromRepo);
-        }
+
     }
 }
