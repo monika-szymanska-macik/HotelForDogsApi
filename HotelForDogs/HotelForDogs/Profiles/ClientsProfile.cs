@@ -10,7 +10,7 @@ namespace HotelForDogs.Profiles
     {
         public ClientsProfile()
         {
-            CreateMap<Entities.Client, Models.ClientDto>()
+            CreateMap<Entities.Client, Models.ReservationDto>()
                 .ForMember(
                 dest => dest.FullName,
                 opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}" )

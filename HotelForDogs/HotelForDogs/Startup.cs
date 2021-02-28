@@ -69,6 +69,7 @@ namespace HotelForDogs
 
             services.AddScoped<IDogRepository, DogRepository>();
             services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
 
             services.AddDbContext<DogHotelContext>(options =>
             {

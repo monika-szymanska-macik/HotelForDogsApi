@@ -12,6 +12,7 @@ namespace HotelForDogs.DbContexts
         }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Dog> Dogs { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -63,6 +64,21 @@ namespace HotelForDogs.DbContexts
                     FirstName = "John",
                     LastName = "Smith",
                     PhoneNumber = "707707707",
+                }
+                );
+            modelBuilder.Entity<Reservation>().HasData(
+
+                new Reservation()
+                {
+                    ReservationId = 1,
+                    ClientId = 1,
+                    DogId = 2
+                },
+                new Reservation()
+                {
+                    ReservationId = 2,
+                    ClientId = 1,
+                    DogId = 1
                 }
                 );
             base.OnModelCreating(modelBuilder);

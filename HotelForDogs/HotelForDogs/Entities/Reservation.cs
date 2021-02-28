@@ -7,16 +7,24 @@ using System.Threading.Tasks;
 
 namespace HotelForDogs.Entities
 {
-    public class StayAtHotel
+    public class Reservation
     {
 
         [Key]
-        public int StayId { get; set; }
+        public int ReservationId { get; set; }
+        [Required]
+        public DateTimeOffset FirstDay { get; set; }
+        [Required]
+        public DateTimeOffset LastDay { get; set; }
 
         [ForeignKey("ClientId")]
         public Client Client { get; set; }
 
         public int ClientId { get; set; }
 
+        [ForeignKey("DogId")]
+        public Dog Dog { get; set; }
+
+        public int DogId { get; set; }
     }
 }
