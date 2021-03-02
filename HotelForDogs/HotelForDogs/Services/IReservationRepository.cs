@@ -8,7 +8,7 @@ namespace HotelForDogs.Services
 {
     public interface IReservationRepository
     {
-        Reservation GetReservation(int reservationId);
+        Reservation GetReservation(int dogId, int clientId);
         void AddReservation(Reservation reservation, int clientId);
         void UpdateReservation(Reservation reservation);
         void DeleteReservation(Reservation reservation);

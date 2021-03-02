@@ -14,10 +14,10 @@ namespace HotelForDogs.Services
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
-        public Reservation GetReservation(int reservationId)
+        public Reservation GetReservation(int dogId, int clientId)
         {
             return _context.Reservations
-                .Where(r => r.ReservationId == reservationId).FirstOrDefault();
+                .Where(r => r.ClientId == clientId).FirstOrDefault();
         }
         public IEnumerable<Reservation> GetClientReservations(int clientId)
         {

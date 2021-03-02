@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelForDogs.Migrations
 {
     [DbContext(typeof(DogHotelContext))]
-    [Migration("20210228140419_StayAdded")]
-    partial class StayAdded
+    [Migration("20210228151347_ReservationAdded")]
+    partial class ReservationAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -140,7 +140,7 @@ namespace HotelForDogs.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("Stays");
+                    b.ToTable("Reservations");
 
                     b.HasData(
                         new
