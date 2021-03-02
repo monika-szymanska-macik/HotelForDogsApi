@@ -13,7 +13,8 @@ namespace HotelForDogs.Entities
         [Key]
         public int ReservationId { get; set; }
         [Required]
-        public int DaysNumberOfStay { get; set; }
+        public DateTimeOffset FirstDay { get; set; }
+        public DateTimeOffset LastDay { get; set; }
 
         [ForeignKey("ClientId")]
         public Client Client { get; set; }

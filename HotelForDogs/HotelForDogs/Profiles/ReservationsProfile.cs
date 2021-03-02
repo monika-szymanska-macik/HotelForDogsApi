@@ -10,6 +10,10 @@ namespace HotelForDogs.Profiles
     {
         public ReservationsProfile()
         {
+            CreateMap<Entities.Reservation, Models.ReservationsDto>()
+                .ForMember(
+                dest => dest.DaysNumberOfStay,
+                opt => opt.MapFrom(src => src.LastDay - src.FirstDay));
             CreateMap<Models.ReservationForCreationDto, Entities.Reservation>();
             CreateMap<Entities.Reservation, Models.ReservationsDto>();
             CreateMap<Models.ReservationForCreationDto, Entities.Reservation>();
