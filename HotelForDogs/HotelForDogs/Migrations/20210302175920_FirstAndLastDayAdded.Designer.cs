@@ -4,14 +4,16 @@ using HotelForDogs.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HotelForDogs.Migrations
 {
     [DbContext(typeof(DogHotelContext))]
-    partial class DogHotelContextModelSnapshot : ModelSnapshot
+    [Migration("20210302175920_FirstAndLastDayAdded")]
+    partial class FirstAndLastDayAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

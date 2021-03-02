@@ -26,8 +26,7 @@ namespace HotelForDogs.Controllers
             _reservationRepository = reservationRepository ?? throw new ArgumentNullException(nameof(reservationRepository));
         }
         [HttpGet]
-        public ActionResult<IEnumerable<ReservationsDto>> GetReservationsForClient(int clientId)
-        
+        public ActionResult<IEnumerable<ReservationsDto>> GetReservationsForClient(int clientId)       
         {
             if (!_clientRepository.ClientExists(clientId))
             {
