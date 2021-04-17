@@ -8,7 +8,7 @@ namespace HotelForDogs.Models
     public class ReservationsDto
     {
         public int ReservationId { get; set; }
-        public int DaysNumberOfStay { get; set; }
+        public TimeSpan DaysNumberOfStay { get; set; }
         public int ClientId { get; set; }
     }
 }

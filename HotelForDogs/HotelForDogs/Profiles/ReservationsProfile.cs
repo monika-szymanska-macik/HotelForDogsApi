@@ -13,7 +13,7 @@ namespace HotelForDogs.Profiles
             CreateMap<Entities.Reservation, Models.ReservationsDto>()
                 .ForMember(
                 dest => dest.DaysNumberOfStay,
-                opt => opt.MapFrom(src => src.LastDay.Subtract(src.FirstDay)));
+                opt => opt.MapFrom(src => src.LastDay.Subtract(src.FirstDay).TotalDays));
 
             CreateMap<Models.ReservationForCreationDto, Entities.Reservation>();
             CreateMap<Entities.Reservation, Models.ReservationsDto>();

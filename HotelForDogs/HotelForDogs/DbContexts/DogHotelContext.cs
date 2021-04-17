@@ -61,7 +61,7 @@ namespace HotelForDogs.DbContexts
                 new Client()
                 {
                     ClientId = 3,
-                    FirstName = "John",
+                    FirstName = "Joh",
                     LastName = "Smith",
                     PhoneNumber = "707707707",
                 }
@@ -72,15 +72,15 @@ namespace HotelForDogs.DbContexts
                 {
                     ReservationId = 1,
                     ClientId = 1,
-                    FirstDay = new DateTime(20/02/2021),
-                    LastDay = new DateTime(28/02/2021)
+                    FirstDay = new DateTime(2021, 2, 7),
+                    LastDay = new DateTime(2021, 2, 9)
                 },
                 new Reservation()
                 {
                     ReservationId = 2,
                     ClientId = 1,
-                    FirstDay = new DateTime(12/02/2021),
-                    LastDay = new DateTime(15/02/2021)
+                    FirstDay = new DateTime(2021, 3, 8),
+                    LastDay = new DateTime(2021, 3, 19)
                 }
                 );
             base.OnModelCreating(modelBuilder);

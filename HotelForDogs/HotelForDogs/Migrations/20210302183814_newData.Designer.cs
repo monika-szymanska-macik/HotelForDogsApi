@@ -4,14 +4,16 @@ using HotelForDogs.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HotelForDogs.Migrations
 {
     [DbContext(typeof(DogHotelContext))]
-    partial class DogHotelContextModelSnapshot : ModelSnapshot
+    [Migration("20210302183814_newData")]
+    partial class newData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
